@@ -1,5 +1,6 @@
 import "./ExpenseItem.css";
 
+//Takes in a title, amount, and date using props
 function ExpenseItem({title, amount, date}) {
   return (
     <div className="expense-item">
