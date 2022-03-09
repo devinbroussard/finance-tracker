@@ -1,4 +1,4 @@
-import "./ExpenseItem.css"
+import "./ExpenseDate.css"
 
 function ExpenseDate({ date }) {
   //Converting the date to text:
@@ -8,10 +8,10 @@ function ExpenseDate({ date }) {
 
   return (
     //Returns a div holding the month, day, and year
-    <div>
-      <div>{month}</div>
-      <div>{day}</div>
-      <div>{year}</div>
+    <div className="expense-date">
+      <div className="expense-date__month">{month}</div>
+<div className="expense-date__year">{year}</div>
+            <div className="expense-date__day">{day}</div>
     </div>
   );
 }
