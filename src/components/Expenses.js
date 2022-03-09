@@ -3,7 +3,7 @@ import './Expenses.css';
 
 function Expenses({expenses}) {
   return (
-    <div>
+    <div className='expenses'>
       {expenses.map((item) => (
         <ExpenseItem
           title={item.title}
