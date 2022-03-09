@@ -4,11 +4,11 @@ import './Expenses.css';
 function Expenses({expenses}) {
   return (
     <div>
-      {expenses.map((item, index) => (
+      {expenses.map((item) => (
         <ExpenseItem
-        title={expenses[index].title}
-        amount={expenses[index].amount}
-        date={expenses[index].date}
+          title={item.title}
+          amount={item.amount}
+          date={item.date}
         />
       ))}
 
