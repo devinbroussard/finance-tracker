@@ -1,14 +1,17 @@
 import ExpenseItem from "./ExpenseItem";
 import './Expenses.css';
 
-function Expenses({ expenseData }) {
+function Expenses({expenses}) {
   return (
     <div>
-      <ExpenseItem
-        title={expenseData[0].title}
-        amount={expenseData[0].amount}
-        date={expenseData[0].date}
-      />
+      {expenses.map((item, index) => (
+        <ExpenseItem
+        title={expenses[index].title}
+        amount={expenses[index].amount}
+        date={expenses[index].date}
+        />
+      ))}
+
     </div>
   );
 }
