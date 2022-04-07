@@ -2,6 +2,7 @@
 import Expenses from "./components/Expenses";
 
 function App() {
+  //An array of expense objects
   const expenses = [
     {
       id: 'e1',
@@ -27,6 +28,7 @@ function App() {
   return (
     <div>
       <h2>Expense Tracker:</h2>
+      {/*Expenses component takes in the array of expense items as props*/}
       <Expenses expenses={expenses}/>
     </div>
   );
