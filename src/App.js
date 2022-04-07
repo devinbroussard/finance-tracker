@@ -28,7 +28,7 @@ function App() {
   return (
     <div>
       <h2>Expense Tracker:</h2>
-      {/*Expenses component takes in the array of expense items as props*/}
+      {/*Expenses component takes in the array of expense items as props using custom attributes*/}
       <Expenses expenses={expenses}/>
     </div>
   );
