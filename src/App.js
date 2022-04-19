@@ -2,24 +2,6 @@ import reactDom from "react-dom";
 import Expenses from "./components/Expenses/Expenses";
 
 const App = () => {
-  let apple = "Apple" + 25.51 + true;
-
-  apple = () => {
-    return 1+1;
-  }
-
-  apple = [
-    () => {
-      return 1+1;
-    },
-    1,
-    {
-      color: 1,
-      id: 2,
-    }
-  ]
-
-
   //An array of expense objects
   const expenses = [
     {
@@ -28,11 +10,12 @@ const App = () => {
       amount: 4.12,
       date: new Date(2020, 7, 14),
     },
-    { 
-      id: "e2", 
+    {
+      id: "e2",
       title: "New TV",
-      amount: 799.49, 
-      date: new Date(2021, 2, 12) },
+      amount: 799.49,
+      date: new Date(2021, 2, 12),
+    },
     {
       id: "e3",
       title: "Car Insurance",
