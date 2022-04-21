@@ -4,6 +4,10 @@ import "./ExpenseItem.css";
 
 //Takes in a title, amount, and date using props
 const ExpenseItem = ({ title, amount, date } /*Deconstructing props*/) => {
+  const clickedHandler = () => {
+    console.log('Clicked');
+  }
+
   return (
     <Card className="expense-item">
       <ExpenseDate date={date} /*Passing data from the date prop to the ExpenseDate component*/ />
@@ -11,7 +15,8 @@ const ExpenseItem = ({ title, amount, date } /*Deconstructing props*/) => {
         <h2>{title}</h2>
         <div className="expense-item__price">${amount}</div>
       </div>
-      <button>Change Title</button>
+      {/*"on" props are event listeners that execute code whenever the event occurs*/}
+      <button onClick={clickedHandler}>Change Title</button>
     </Card>
   );
 }
