@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 import "./ExpenseItem.css";
-import { useCallback } from 'react/cjs/react.production.min';
+import { useCallback } from 'react';
 
 //Takes in a title, amount, and date using props
 const ExpenseItem = ({ initialTitle, amount, date } /*Deconstructing props*/) => {
@@ -15,6 +15,7 @@ const ExpenseItem = ({ initialTitle, amount, date } /*Deconstructing props*/) =>
   useCallback uses the same instance of the function with each rerender, increasing performance*/
   const clickedHandler = useCallback(() => {
     setTitle('Updated!');
+    console.log(title);
   }, [title]);
 
   /**
