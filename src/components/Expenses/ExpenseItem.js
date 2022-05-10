@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 import "./ExpenseItem.css";
+import { useCallback } from 'react/cjs/react.production.min';
 
 //Takes in a title, amount, and date using props
 const ExpenseItem = ({ initialTitle, amount, date } /*Deconstructing props*/) => {
@@ -10,11 +11,15 @@ const ExpenseItem = ({ initialTitle, amount, date } /*Deconstructing props*/) =>
   When states are changed, it tells react to call this function again.*/
   const [title, setTitle] = useState(initialTitle);
 
-  /*It is a convention for event functions to have "handler" at the end*/
-  const clickedHandler = () => {
+  /*It is a convention for event functions to have "handler" at the end
+  useCallback uses the same instance of the function with each rerender, increasing performance*/
+  const clickedHandler = useCallback(() => {
     setTitle('Updated!');
-    console.log(title);
-  }
+  }, [title]);
+
+  /**
+   * useMemo(): Similar to useCallback, but updates the dependencies automatically
+   */
 
   return (
     <Card className="expense-item">
