@@ -1,5 +1,6 @@
 import reactDom from "react-dom";
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 const App = () => {
   //An array of expense objects
@@ -32,7 +33,7 @@ const App = () => {
 
   return (
     <div>
-      <h2>Expense Tracker:</h2>
+      <NewExpense />
       {/*Expenses component takes in the array of expense items as props using custom attributes*/}
       <Expenses expenses={expenses} />
     </div>

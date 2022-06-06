@@ -13,7 +13,7 @@ const ExpenseItem = ({ initialTitle, amount, date } /*Deconstructing props*/) =>
 
   /*It is a convention for event functions to have "handler" at the end
   useCallback uses the same instance of the function with each rerender, increasing performance*/
-  const clickedHandler = useCallback(() => {
+  const clickHandler = useCallback(() => {
     setTitle('Updated!');
     console.log(title);
   }, [title]);
@@ -30,7 +30,7 @@ const ExpenseItem = ({ initialTitle, amount, date } /*Deconstructing props*/) =>
         <div className="expense-item__price">${amount}</div>
       </div>
       {/*"on" props are event listeners that execute code whenever the event occurs*/}
-      <button onClick={clickedHandler}>Change Title</button>
+      <button onClick={clickHandler}>Change Title</button>
     </Card>
   );
 }
