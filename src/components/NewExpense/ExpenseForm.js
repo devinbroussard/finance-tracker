@@ -1,47 +1,61 @@
-import React, { useState } from 'react';
-import { useCallback } from 'react/cjs/react.production.min';
+import React, { useState, useCallback } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = () => {
-    //Creating states that store default values for the expense item data
-    const [enteredTitle, setEnteredTitle] = useState('');
-    const [enteredAmount, setEnteredAmount] = useState('0.00');
-    const [enteredDate, setEnteredDate] = useState("2022-01-01");
+    const [userInput, setUserInput] = useState({
+        enteredTitle: '',
+        enteredAmount: '0.00',
+        enteredDate: '2022-01-01'
+    });
 
-    //Creating event handlers that are called when input is changed
-    //The "event" property is a default one that stores the data of the event
-    const titleChangeHandler = (event) => {
-        //"event.target.value" returns the current value of the input after the change
-        setEnteredTitle(event.target.value);
+    // Handles updating entered input states
+    const inputChangeHandler = useCallback((key, event) => {
+        // If userInput does not contain the given key, return
+        if (!userInput[key]) return;
+
+        setUserInput({
+            ...userInput,
+            
+            [key]: event.target.value
+        });
+
+        console.log(userInput[key]);
+    }, [userInput]);
+
+    // Called when the form is submitted
+    const submitHandler = (event) => {
+        // Stops the page from being refreshed after a submit
+        event.preventDefault();
+
+        const expenseData = {
+            ...userInput,
+            date: new Date(userInput.enteredDate)
+        };
+
+        console.log(expenseData);
     };
 
-    const amountChangeHandler = (event) => {
-        setEnteredAmount(event.target.value);
-    }
-
-    const dateChangeHandler = (event) => {
-        setEnteredDate(event.target.value);
-    }
-
-    return <form>
-        <div className="new-expense__controls">
-            <div className="new-expense__control">
-                <label>Title</label>
-                <input type='text' onChange={titleChangeHandler} />
+    return (
+        <form onSubmit={submitHandler}>
+            <div className="new-expense__controls">
+                <div className="new-expense__control">
+                    <label>Title</label>
+                    <input type='text' onChange={(event) => inputChangeHandler('enteredTitle', event)} />
+                </div>
+                <div className="new-expense__control">
+                    <label>Amount</label>
+                    <input type='text' min="0.01" step="0.01" onChange={(event) => inputChangeHandler('enteredAmount', event)} />
+                </div>
+                <div className="new-expense__control">
+                    <label>Date</label>
+                    <input type='date' min="2022-01-01" max="2023-12-31" onChange={(event) => inputChangeHandler('enteredDate', event)} />
+                </div>
             </div>
-            <div className="new-expense__control">
-                <label>Amount</label>
-                <input type='text' min="0.01" step="0.01" onChange={amountChangeHandler} />
+            <div className="new-expense__actions">
+                <button type="submit">Add Expense</button>
             </div>
-            <div className="new-expense__control">
-                <label>Amount</label>
-                <input type='date' min="2022-01-01" max="2023-12-31" onChange={dateChangeHandler} />
-            </div>
-        </div>
-        <div className="new-expense__actions">
-            <button type="submit">Add Expense</button>
-        </div>
-    </form>
+        </form>
+    );
 }
 
 export default ExpenseForm;
