@@ -1,5 +1,6 @@
-import React, { useState, useCallback } from 'react';
 import './ExpenseForm.css';
+
+import React, { useCallback, useState } from 'react';
 
 const ExpenseForm = () => {
     const [userInput, setUserInput] = useState({
@@ -11,7 +12,7 @@ const ExpenseForm = () => {
     // Handles updating entered input states
     const inputChangeHandler = useCallback((key, event) => {
         // If userInput does not contain the given key, return
-        if (!userInput[key]) return;
+        if (!(key in userInput)) return;
 
         setUserInput({
             ...userInput,
