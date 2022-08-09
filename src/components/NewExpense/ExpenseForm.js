@@ -2,7 +2,7 @@ import './ExpenseForm.css';
 
 import React, { useCallback, useState } from 'react';
 
-const ExpenseForm = () => {
+const ExpenseForm = ({onSaveExpenseData}) => {
     const [userInput, setUserInput] = useState({
         enteredTitle: '',
         enteredAmount: '',
@@ -19,8 +19,6 @@ const ExpenseForm = () => {
             
             [key]: event.target.value
         });
-
-        console.log(userInput[key]);
     }, [userInput]);
 
     // Called when the form is submitted
@@ -33,15 +31,15 @@ const ExpenseForm = () => {
             date: new Date(userInput.enteredDate)
         };
         
-        // Resetting the user input
+        // Resetting the user input 
         setUserInput({
             enteredTitle: '',
             enteredAmount: '',
             enteredDate: ''
         })
 
-        console.log(expenseData);
-    }, [userInput]);
+        onSaveExpenseData(expenseData);
+    }, [userInput, onSaveExpenseData]);
 
     return (
         <form onSubmit={submitHandler}>

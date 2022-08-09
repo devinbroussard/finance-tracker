@@ -1,13 +1,22 @@
-import React from 'react';
-import ExpenseForm from './ExpenseForm';
 import './NewExpense.css';
 
-//A form used to make new expense items
-const NewExpense = () => {
+import { React, useCallback } from 'react';
 
-    
+import ExpenseForm from './ExpenseForm';
+
+//A form used to make new expense items
+const NewExpense = ({onAddExpense}) => {
+    const onSaveExpenseDataHander = useCallback((enteredExpenseData) => {
+        const expenseData = {
+            ...enteredExpenseData,
+            id: Math.random().toString()
+        }
+
+        onAddExpense(expenseData);
+    }, [onAddExpense]);
+
     return <div className="new-expense">
-        <ExpenseForm />
+        <ExpenseForm onSaveExpenseData={onSaveExpenseDataHander} />
     </div>
 };
 

@@ -1,5 +1,6 @@
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
+import { useCallback } from "react";
 
 const App = () => {
   //An array of expense objects
@@ -30,9 +31,13 @@ const App = () => {
     },
   ];
 
+  const addExpenseHandler = useCallback((expense) => {
+    console.log(expense);
+  }, []);
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       {/*Expenses component takes in the array of expense items as props using custom attributes*/}
       <Expenses expenses={expenses} />
     </div>
